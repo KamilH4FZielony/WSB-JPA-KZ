@@ -1,7 +1,7 @@
 package com.capgemini.wsb.persistence.entity;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.*;
 
@@ -28,17 +28,29 @@ public class PatientEntity {
 	private String patientNumber;
 
 	@Column(nullable = false)
-	private LocalDate dateOfBirth;
-	private LocalDate lastVisitDate;
+	private LocalDate dateOfBirth = LocalDate.of(1900, 1, 1); // Default date of birth
 
-	// One-to-One z AddressEntity
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "address_id", referencedColumnName = "id")
-	private AddressEntity address;
+	@OneToMany(mappedBy = "patient")
+	private Collection<VisitEntity> visits;
 
-	// One-to-Many z VisitEntity
-	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
-	private List<VisitEntity> visits;
+	@Column(nullable = false)
+	private Integer age = 0; // Default age
+
+	public PatientEntity() {
+		// Default constructor
+	}
+
+	// Constructor with all required fields
+	public PatientEntity(String firstName, String lastName, String telephoneNumber, String patientNumber, LocalDate dateOfBirth, Integer age) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.telephoneNumber = telephoneNumber;
+		this.patientNumber = patientNumber;
+		this.dateOfBirth = dateOfBirth != null ? dateOfBirth : LocalDate.of(1900, 1, 1); // Ensure dateOfBirth is not null
+		this.age = age != null ? age : 0; // Ensure age is not null
+	}
+
+	// Getters and setters
 
 	public Long getId() {
 		return id;
@@ -93,22 +105,22 @@ public class PatientEntity {
 	}
 
 	public void setDateOfBirth(LocalDate dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+		this.dateOfBirth = dateOfBirth != null ? dateOfBirth : LocalDate.of(1900, 1, 1); // Ensure dateOfBirth is not null
 	}
 
-	public LocalDate getLastVisitDate() {
-		return lastVisitDate;
-	}
-
-	public void setLastVisitDate(LocalDate lastVisitDate) {
-		this.lastVisitDate = lastVisitDate;
-	}
-
-	public List<VisitEntity> getVisits() {
+	public Collection<VisitEntity> getVisits() {
 		return visits;
 	}
 
-	public void setVisits(List<VisitEntity> visits) {
+	public void setVisits(Collection<VisitEntity> visits) {
 		this.visits = visits;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age != null ? age : 0; // Ensure age is not null
 	}
 }

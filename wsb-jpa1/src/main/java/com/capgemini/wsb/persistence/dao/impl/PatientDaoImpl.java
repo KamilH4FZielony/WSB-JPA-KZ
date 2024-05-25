@@ -1,44 +1,49 @@
 package com.capgemini.wsb.persistence.dao.impl;
 
+import com.capgemini.wsb.dto.PatientTO;
 import com.capgemini.wsb.persistence.dao.PatientDao;
 import com.capgemini.wsb.persistence.entity.PatientEntity;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-
-import java.time.LocalDate;
+import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements PatientDao {
 
-    @SuppressWarnings("unchecked")
+    private final EntityManager entityManager;
+
+    public PatientDaoImpl(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
+
     @Override
-    public List<PatientEntity> findPatientsWithMoreThanXVisits(int numberOfVisits) {
-        Query query = entityManager.createQuery(
-                "SELECT p FROM PatientEntity p JOIN FETCH p.visits v GROUP BY p HAVING COUNT(v) > :numberOfVisits");
-        query.setParameter("numberOfVisits", numberOfVisits);
+    public List<PatientEntity> findByLastName(String lastName) {
+        TypedQuery<PatientEntity> query = entityManager.createQuery(
+                "SELECT p FROM PatientEntity p WHERE p.lastName = :lastName", PatientEntity.class);
+        query.setParameter("lastName", lastName);
         return query.getResultList();
     }
 
-    @SuppressWarnings("unchecked")
     @Override
-    public List<PatientEntity> findPatientsByLastVisitBefore(LocalDate date) {
-        Query query = entityManager.createQuery("SELECT p FROM PatientEntity p WHERE p.lastVisitDate < :date");
-        query.setParameter("date", date);
+    public List<PatientEntity> findPatientsWithMoreThanXVisits(int visitsCount) {
+        TypedQuery<PatientEntity> query = entityManager.createQuery(
+                "SELECT p FROM PatientEntity p WHERE SIZE(p.visits) > :visitsCount", PatientEntity.class);
+        query.setParameter("visitsCount", visitsCount);
         return query.getResultList();
     }
 
-    @PersistenceContext
-    private EntityManager entityMunagier;
-
     @Override
-    public List<PatientEntity> findPatientsByDateOfBirthBefore(LocalDate dateOfBirth) {
-        return entityManager.createQuery(
-                "SELECT p FROM PatientEntity p WHERE p.dateOfBirth < :dateOfBirth", PatientEntity.class)
-                .setParameter("dateOfBirth", dateOfBirth)
-                .getResultList();
+    public List<PatientEntity> findByCustomField(String field, Object value, String condition) {
+        TypedQuery<PatientEntity> query = entityManager.createQuery(
+                "SELECT p FROM PatientEntity p WHERE p." + field + " " + condition + " :value", PatientEntity.class);
+        query.setParameter("value", value);
+        return query.getResultList();
+    }
+    @Override
+    public Optional<PatientEntity> findById(Long id) {
+        return Optional.ofNullable(entityManager.find(PatientEntity.class, id));
     }
 }

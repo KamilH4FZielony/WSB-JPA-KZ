@@ -18,18 +18,18 @@ public class VisitEntity {
 	@Column(nullable = false)
 	private LocalDateTime time;
 
-	// Many-to-one z DoctorEntity
 	@ManyToOne
-	@JoinColumn(name = "doctor_id", nullable = false)
-	private DoctorEntity doctor; // Dwustronna z VisitEntity do DoctorEntity
+	@JoinColumn(name = "PATIENT_ID", nullable = false)
+	private PatientEntity patient;
 
-	// Many-to-one z PatientEntity
 	@ManyToOne
-	@JoinColumn(name = "patient_id", nullable = false)
-	private PatientEntity patient; // Dwustronna z VisitEntity do PatientEntity
+	@JoinColumn(name = "DOCTOR_ID", nullable = false)
+	private DoctorEntity doctor;
 
-	@OneToMany(mappedBy = "visit", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<MedicalTreatmentEntity> treatments;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "VISIT_ID")
+	private List<MedicalTreatmentEntity> medicalTreatmentEntities;
+
 
 	public Long getId() {
 		return id;
@@ -55,14 +55,6 @@ public class VisitEntity {
 		this.time = time;
 	}
 
-	public DoctorEntity getDoctor() {
-		return doctor;
-	}
-
-	public void setDoctor(DoctorEntity doctor) {
-		this.doctor = doctor;
-	}
-
 	public PatientEntity getPatient() {
 		return patient;
 	}
@@ -71,12 +63,19 @@ public class VisitEntity {
 		this.patient = patient;
 	}
 
-	public List<MedicalTreatmentEntity> getTreatments() {
-		return treatments;
+	public DoctorEntity getDoctor() {
+		return doctor;
 	}
 
-	public void setTreatments(List<MedicalTreatmentEntity> treatments) {
-		this.treatments = treatments;
+	public void setDoctor(DoctorEntity doctor) {
+		this.doctor = doctor;
 	}
 
+	public List<MedicalTreatmentEntity> getMedicalTreatmentEntities() {
+		return medicalTreatmentEntities;
+	}
+
+	public void setMedicalTreatmentEntities(List<MedicalTreatmentEntity> medicalTreatmentEntities) {
+		this.medicalTreatmentEntities = medicalTreatmentEntities;
+	}
 }

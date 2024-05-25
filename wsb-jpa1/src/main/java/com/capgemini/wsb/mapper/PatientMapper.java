@@ -1,47 +1,49 @@
 package com.capgemini.wsb.mapper;
 
-import com.capgemini.wsb.dto.PatientTO;
 import com.capgemini.wsb.persistence.entity.PatientEntity;
+import com.capgemini.wsb.dto.PatientTO;
+import com.capgemini.wsb.dto.VisitTO;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
-public class PatientMapper {
-    public static PatientTO mapToDTO(final PatientEntity patientEntity) {
+public final class PatientMapper {
+
+    public static PatientTO mapToTO(final PatientEntity patientEntity) {
         if (patientEntity == null) {
             return null;
         }
-        final PatientTO patientDTO = new PatientTO();
-        patientDTO.setId(patientEntity.getId());
-        patientDTO.setFirstName(patientEntity.getFirstName());
-        patientDTO.setLastName(patientEntity.getLastName());
-        patientDTO.setTelephoneNumber(patientEntity.getTelephoneNumber());
-        patientDTO.setEmail(patientEntity.getEmail());
-        patientDTO.setPatientNumber(patientEntity.getPatientNumber());
-        patientDTO.setDateOfBirth(patientEntity.getDateOfBirth());
-        patientDTO.setLastVisitDate(patientEntity.getLastVisitDate());
-        patientDTO.setVisits(patientEntity.getVisits().stream()
-                .map(VisitMapper::mapToDTO)
-                .collect(Collectors.toList()));
-        return patientDTO;
+        final PatientTO patientTO = new PatientTO();
+        patientTO.setId(patientEntity.getId());
+        patientTO.setFirstName(patientEntity.getFirstName());
+        patientTO.setLastName(patientEntity.getLastName());
+        patientTO.setTelephoneNumber(patientEntity.getTelephoneNumber());
+        patientTO.setEmail(patientEntity.getEmail());
+        patientTO.setPatientNumber(patientEntity.getPatientNumber());
+        patientTO.setDateOfBirth(patientEntity.getDateOfBirth());
+
+        List<VisitTO> visits = patientEntity.getVisits().stream()
+                .map(VisitMapper::mapToTO)
+                .collect(Collectors.toList());
+        patientTO.setVisits(visits);
+
+        return patientTO;
     }
 
-    public static PatientEntity mapToEntity(final PatientTO patientDTO) {
-        if (patientDTO == null) {
+    public static PatientEntity mapToEntity(final PatientTO patientTO) {
+        if (patientTO == null) {
             return null;
         }
-        final PatientEntity patientEntity = new PatientEntity();
-        patientEntity.setId(patientDTO.getId());
-        patientEntity.setFirstName(patientDTO.getFirstName());
-        patientEntity.setLastName(patientDTO.getLastName());
-        patientEntity.setTelephoneNumber(patientDTO.getTelephoneNumber());
-        patientEntity.setEmail(patientDTO.getEmail());
-        patientEntity.setPatientNumber(patientDTO.getPatientNumber());
-        patientEntity.setDateOfBirth(patientDTO.getDateOfBirth());
-        patientEntity.setLastVisitDate(patientDTO.getLastVisitDate());
-        // Map visits
-        patientEntity.setVisits(patientDTO.getVisits().stream()
-                .map(VisitMapper::mapToEntity)
-                .collect(Collectors.toList()));
+
+        PatientEntity patientEntity = new PatientEntity();
+        patientEntity.setId(patientTO.getId());
+        patientEntity.setFirstName(patientTO.getFirstName());
+        patientEntity.setLastName(patientTO.getLastName());
+        patientEntity.setTelephoneNumber(patientTO.getTelephoneNumber());
+        patientEntity.setEmail(patientTO.getEmail());
+        patientEntity.setPatientNumber(patientTO.getPatientNumber());
+        patientEntity.setDateOfBirth(patientTO.getDateOfBirth());
+
         return patientEntity;
     }
 }

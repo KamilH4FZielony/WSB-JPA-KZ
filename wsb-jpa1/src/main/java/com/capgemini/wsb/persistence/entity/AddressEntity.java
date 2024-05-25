@@ -1,6 +1,7 @@
 package com.capgemini.wsb.persistence.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "ADDRESS")
@@ -18,13 +19,13 @@ public class AddressEntity {
 
 	private String postalCode;
 
-	// One-to-One z DoctorEntity
-	@OneToOne(mappedBy = "address")
-	private DoctorEntity doctor;
 
-	// One-to-One z PatientEntity
-	@OneToOne(mappedBy = "address")
-	private PatientEntity patient;
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "ADDRESS_PATIENT_MAPPING", joinColumns = @JoinColumn(name = "ADDRESS_ID"), inverseJoinColumns = @JoinColumn(name = "PATIENT_ID"))
+	private List<PatientEntity> patientEntities;
+	//relacja Many to Many jednostronna od addrerssentity
+
+
 
 	public Long getId() {
 		return id;

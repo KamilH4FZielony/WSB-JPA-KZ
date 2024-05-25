@@ -1,35 +1,41 @@
-INSERT INTO ADDRESS (city, address_line1, address_line2, postal_code)
-VALUES 
-    ('New York', '123 Main St', 'Apt 4B', '10001'),
-    ('Los Angeles', '456 Elm St', 'Suite 200', '90001'),
-    ('Chicago', '789 Oak Ave', NULL, '60601'),
-    ('Houston', '101 Pine St', 'Apt 10', '77001');
+insert into address (id, address_line1, address_line2, city, postal_code)
+            values (1, 'xx', 'yy', 'city', '62-030');
 
-INSERT INTO DOCTOR (first_name, last_name, telephone_number, email, doctor_number, specialization, address_id)
-VALUES 
-    ('John', 'Doe', '123456789', 'john.doe@example.com', 'D001', 'SURGEON', 1),
-    ('Emily', 'Smith', '987654321', 'emily.smith@example.com', 'D002', 'PEDIATRICIAN', 2),
-    ('Michael', 'Johnson', '555444333', 'michael.johnson@example.com', 'D003', 'CARDIOLOGIST', 3),
-    ('Sarah', 'Brown', '111222333', 'sarah.brown@example.com', 'D004', 'DERMATOLOGIST', 1);
+INSERT INTO PATIENT (first_name, last_name, telephone_number, email, patient_number, date_of_birth, age)
+VALUES
+('John', 'Doe', '123456789', 'john.doe@example.com', 'P123', '1980-01-01', 41),
+('Jane', 'Doe', '987654321', 'jane.doe@example.com', 'P456', '1985-05-05', 36),
+('Alice', 'Smith', '555111222', 'alice.smith@example.com', 'P789', '1990-10-10', 31),
+('Michael', 'Johnson', '999888777', 'michael.johnson@example.com', 'P111', '1975-03-15', 46),
+('Emily', 'Williams', '333222111', 'emily.williams@example.com', 'P222', '1988-07-20', 33),
+('William', 'Brown', '666555444', 'william.brown@example.com', 'P333', '1995-12-25', 26),
+('Olivia', 'Jones', '444333222', 'olivia.jones@example.com', 'P444', '1983-09-30', 38),
+('Ethan', 'Garcia', '222333444', 'ethan.garcia@example.com', 'P555', '1970-11-05', 51),
+('Ava', 'Martinez', '777666555', 'ava.martinez@example.com', 'P666', '1982-04-12', 39),
+('Noah', 'Lopez', '888999000', 'noah.lopez@example.com', 'P777', '1992-08-18', 29);
 
-INSERT INTO PATIENT (first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id)
-VALUES 
-    ('Jane', 'Doe', '123456789', 'jane.doe@example.com', 'P001', '1980-05-15', 1),
-    ('Adam', 'Wilson', '555123456', 'adam.wilson@example.com', 'P002', '1975-08-20', 2),
-    ('Rachel', 'Jones', '777888999', 'rachel.jones@example.com', 'P003', '1990-03-10', 3),
-    ('Daniel', 'Garcia', '333555777', 'daniel.garcia@example.com', 'P004', '1988-12-05', 1);
+INSERT INTO DOCTOR (first_name, last_name, telephone_number, email, doctor_number, specialization)
+VALUES
+('Dr. Smith', 'Family', '111222333', 'dr.smith@example.com', 'D123', 'FAMILY_MEDICINE'),
+('Dr. Johnson', 'Pediatrician', '444555666', 'dr.johnson@example.com', 'D456', 'PEDIATRICS'),
+('Dr. Williams', 'Surgeon', '777888999', 'dr.williams@example.com', 'D789', 'SURGERY'),
+('Dr. Brown', 'Cardiologist', '333444555', 'dr.brown@example.com', 'D111', 'CARDIOLOGY'),
+('Dr. Garcia', 'Dermatologist', '999000111', 'dr.garcia@example.com', 'D222', 'DERMATOLOGY'),
+('Dr. Martinez', 'Psychiatrist', '666777888', 'dr.martinez@example.com', 'D333', 'PSYCHIATRY'),
+('Dr. Lopez', 'Ophthalmologist', '888999000', 'dr.lopez@example.com', 'D444', 'OPHTHALMOLOGY'),
+('Dr. Lee', 'Endocrinologist', '222333444', 'dr.lee@example.com', 'D555', 'ENDOCRINOLOGY'),
+('Dr. Adams', 'Orthopedist', '555666777', 'dr.adams@example.com', 'D666', 'ORTHOPEDICS'),
+('Dr. Scott', 'Urologist', '444333222', 'dr.scott@example.com', 'D777', 'UROLOGY');
 
-INSERT INTO VISIT (description, time, doctor_id, patient_id)
-VALUES 
-    ('Annual Checkup', '2024-05-20T10:00:00', 1, 1),
-    ('Dental Checkup', '2024-06-15T09:30:00', 2, 3),
-    ('Eye Examination', '2024-07-20T11:15:00', 3, 2),
-    ('Physical Therapy', '2024-08-10T14:00:00', 4, 1);
-
-INSERT INTO MEDICAL_TREATMENT (description, type, visit_id)
-VALUES 
-    ('Blood Test', 'DIAGNOSTIC', 1),
-    ('X-Ray', 'IMAGING', 1),
-    ('Dental Cleaning', 'TREATMENT', 2),
-    ('Contact Lens Fitting', 'TREATMENT', 3),
-    ('Joint Mobilization', 'THERAPY', 4);
+INSERT INTO VISIT (description, time, patient_id, doctor_id)
+VALUES
+('Regular checkup', '2024-06-01 10:00:00', 1, 1),
+('Vaccination', '2024-06-15 14:30:00', 2, 2),
+('Consultation', '2024-07-05 09:15:00', 3, 3),
+('Follow-up appointment', '2024-07-20 11:00:00', 4, 4),
+('Dental cleaning', '2024-08-10 15:45:00', 5, 5),
+('Physical examination', '2024-08-25 08:30:00', 6, 6),
+('Eye examination', '2024-09-05 13:20:00', 7, 7),
+('Routine checkup', '2024-09-20 09:45:00', 8, 8),
+('Annual physical', '2024-10-10 12:15:00', 9, 9),
+('Surgical consultation', '2024-10-25 16:00:00', 10, 10);

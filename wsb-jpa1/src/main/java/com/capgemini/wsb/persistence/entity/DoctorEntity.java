@@ -1,6 +1,7 @@
 package com.capgemini.wsb.persistence.entity;
 
 import com.capgemini.wsb.persistence.enums.Specialization;
+import com.mysql.cj.x.protobuf.MysqlxCursor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -31,13 +32,20 @@ public class DoctorEntity {
 	@Enumerated(EnumType.STRING)
 	private Specialization specialization;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "address_id", referencedColumnName = "id")
-	private AddressEntity address;
 
-	// One-to-Many z VisitEntity
-	@OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
-	private List<VisitEntity> visits;
+	@OneToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "DOCTOR_ID")
+	private List<VisitEntity> visitEntities;
+	//relacja One to Many jednostronna od doctorentity
+
+
+
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name = "DOCTOR_ADDRESS_MAPPING", joinColumns = @JoinColumn(name = "DOCTOR_ID"), inverseJoinColumns = @JoinColumn(name = "ADDRESS_ID"))
+	private List<AddressEntity> addressEntities;
+	//relacja Many to Many jednostronna od doctorentity / wywala błąd
+
+
 
 	public Long getId() {
 		return id;

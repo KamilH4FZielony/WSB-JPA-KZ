@@ -7,22 +7,15 @@ import java.util.List;
 public class PatientTO implements Serializable {
 
     private Long id;
-
     private String firstName;
-
     private String lastName;
-
     private String telephoneNumber;
-
     private String email;
-
     private String patientNumber;
-
     private LocalDate dateOfBirth;
-
-    private LocalDate lastVisitDate;
-
+    private Integer age;
     private List<VisitTO> visits;
+
 
     public Long getId() {
         return id;
@@ -80,12 +73,12 @@ public class PatientTO implements Serializable {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public LocalDate getLastVisitDate() {
-        return lastVisitDate;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setLastVisitDate(LocalDate lastVisitDate) {
-        this.lastVisitDate = lastVisitDate;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public List<VisitTO> getVisits() {
