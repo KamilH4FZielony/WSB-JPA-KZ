@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.capgemini.wsb.Service.MinimalTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.004 s <<< FAILURE! - in com.capgemini.wsb.Service.MinimalTest
+testContextLoads  Time elapsed: 0.004 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.capgemini.wsb.Service.MinimalTest.testContextLoads(MinimalTest.java:20)
+

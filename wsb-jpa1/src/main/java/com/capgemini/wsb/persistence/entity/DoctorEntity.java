@@ -1,7 +1,6 @@
 package com.capgemini.wsb.persistence.entity;
 
 import com.capgemini.wsb.persistence.enums.Specialization;
-import com.mysql.cj.x.protobuf.MysqlxCursor;
 
 import javax.persistence.*;
 import java.util.List;

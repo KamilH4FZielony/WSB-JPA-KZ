@@ -16,16 +16,16 @@ VALUES
 
 INSERT INTO DOCTOR (first_name, last_name, telephone_number, email, doctor_number, specialization)
 VALUES
-('Dr. Smith', 'Family', '111222333', 'dr.smith@example.com', 'D123', 'FAMILY_MEDICINE'),
-('Dr. Johnson', 'Pediatrician', '444555666', 'dr.johnson@example.com', 'D456', 'PEDIATRICS'),
-('Dr. Williams', 'Surgeon', '777888999', 'dr.williams@example.com', 'D789', 'SURGERY'),
-('Dr. Brown', 'Cardiologist', '333444555', 'dr.brown@example.com', 'D111', 'CARDIOLOGY'),
-('Dr. Garcia', 'Dermatologist', '999000111', 'dr.garcia@example.com', 'D222', 'DERMATOLOGY'),
-('Dr. Martinez', 'Psychiatrist', '666777888', 'dr.martinez@example.com', 'D333', 'PSYCHIATRY'),
-('Dr. Lopez', 'Ophthalmologist', '888999000', 'dr.lopez@example.com', 'D444', 'OPHTHALMOLOGY'),
-('Dr. Lee', 'Endocrinologist', '222333444', 'dr.lee@example.com', 'D555', 'ENDOCRINOLOGY'),
-('Dr. Adams', 'Orthopedist', '555666777', 'dr.adams@example.com', 'D666', 'ORTHOPEDICS'),
-('Dr. Scott', 'Urologist', '444333222', 'dr.scott@example.com', 'D777', 'UROLOGY');
+('Dr. John', 'Smith', '111222333', 'dr.smith@example.com', 'D123', 'FAMILY_MEDICINE'),
+('Dr. Erik', 'Johnson', '444555666', 'dr.johnson@example.com', 'D456', 'PEDIATRICS'),
+('Dr. Adrian', 'Williams', '777888999', 'dr.williams@example.com', 'D789', 'SURGERY'),
+('Dr. Bob', 'Brown', '333444555', 'dr.brown@example.com', 'D111', 'CARDIOLOGY'),
+('Dr. Guy', 'Garcia', '999000111', 'dr.garcia@example.com', 'D222', 'DERMATOLOGY'),
+('Dr. Wojtek', 'Martinez', '666777888', 'dr.martinez@example.com', 'D333', 'PSYCHIATRY'),
+('Dr. Adam', 'Lopez', '888999000', 'dr.lopez@example.com', 'D444', 'OPHTHALMOLOGY'),
+('Dr. Henryk', 'Lee', '222333444', 'dr.lee@example.com', 'D555', 'ENDOCRINOLOGY'),
+('Dr. Jurek', 'Adams', '555666777', 'dr.adams@example.com', 'D666', 'ORTHOPEDICS'),
+('Dr. Eustachy', 'Scott', '444333222', 'dr.scott@example.com', 'D777', 'UROLOGY');
 
 INSERT INTO VISIT (description, time, patient_id, doctor_id)
 VALUES

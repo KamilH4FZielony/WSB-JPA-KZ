@@ -31,8 +31,6 @@ C:\Users\kamil\Desktop\wsb-jpa1\src\main\java\com\capgemini\wsb\persistence\enum
 C:\Users\kamil\Desktop\wsb-jpa1\src\main\java\com\capgemini\wsb\dto\DoctorTO.java
 C:\Users\kamil\Desktop\wsb-jpa1\src\main\java\com\capgemini\wsb\persistence\dao\impl\AddressDaoImpl.java
 C:\Users\kamil\Desktop\wsb-jpa1\src\main\java\com\capgemini\wsb\persistence\entity\DoctorEntity.java
-C:\Users\kamil\Desktop\wsb-jpa1\src\main\java\com\capgemini\wsb\persistence\repository\PatientRepository.java
-C:\Users\kamil\Desktop\wsb-jpa1\src\main\java\com\capgemini\wsb\persistence\entity\EntityManager.java
 C:\Users\kamil\Desktop\wsb-jpa1\src\main\java\com\capgemini\wsb\service\impl\VisitServiceImpl.java
 C:\Users\kamil\Desktop\wsb-jpa1\src\main\java\com\capgemini\wsb\rest\AddressController.java
 C:\Users\kamil\Desktop\wsb-jpa1\src\main\java\com\capgemini\wsb\dto\VisitTO.java

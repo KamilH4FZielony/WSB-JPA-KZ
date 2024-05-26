@@ -1,6 +1,5 @@
 package com.capgemini.wsb.Service;
 
-import com.capgemini.wsb.dto.PatientTO;
 import com.capgemini.wsb.persistence.dao.PatientDao;
 import com.capgemini.wsb.persistence.dao.impl.PatientDaoImpl;
 import com.capgemini.wsb.persistence.entity.PatientEntity;
@@ -11,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-
 import java.time.LocalDate;
 import java.util.Optional;
 

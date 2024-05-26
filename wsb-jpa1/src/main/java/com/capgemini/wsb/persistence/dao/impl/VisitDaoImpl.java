@@ -3,6 +3,7 @@ package com.capgemini.wsb.persistence.dao.impl;
 import com.capgemini.wsb.persistence.dao.VisitDao;
 import com.capgemini.wsb.persistence.entity.VisitEntity;
 import org.springframework.stereotype.Repository;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;

@@ -4,11 +4,13 @@ import com.capgemini.wsb.persistence.dao.impl.PatientDaoImpl;
 import com.capgemini.wsb.persistence.entity.PatientEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class PatientDaoImplFindPatientsWithMoreThanXVisitsTest {

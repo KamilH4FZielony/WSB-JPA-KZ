@@ -2,7 +2,6 @@ package com.capgemini.wsb.persistence.dao;
 
 import java.io.Serializable;
 import java.util.List;
-
 public interface Dao<T, K extends Serializable> {
 
     T save(T entity);

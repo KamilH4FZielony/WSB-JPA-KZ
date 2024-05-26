@@ -3,14 +3,16 @@ package com.capgemini.wsb.persistance.dao;
 import com.capgemini.wsb.persistence.dao.PatientDao;
 import com.capgemini.wsb.persistence.entity.PatientEntity;
 import org.junit.jupiter.api.Test;
-import java.util.List;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
 import java.time.LocalDate;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest

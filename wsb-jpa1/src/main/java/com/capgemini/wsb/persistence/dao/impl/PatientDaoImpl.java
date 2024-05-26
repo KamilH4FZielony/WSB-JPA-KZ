@@ -1,6 +1,5 @@
 package com.capgemini.wsb.persistence.dao.impl;
 
-import com.capgemini.wsb.dto.PatientTO;
 import com.capgemini.wsb.persistence.dao.PatientDao;
 import com.capgemini.wsb.persistence.entity.PatientEntity;
 import org.springframework.stereotype.Repository;
@@ -41,6 +40,7 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
                 "SELECT p FROM PatientEntity p WHERE p." + field + " " + condition + " :value", PatientEntity.class);
         query.setParameter("value", value);
         return query.getResultList();
+
     }
     @Override
     public Optional<PatientEntity> findById(Long id) {

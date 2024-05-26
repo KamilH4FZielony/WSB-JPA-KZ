@@ -1,12 +1,10 @@
 com\capgemini\wsb\persistence\enums\TreatmentType.class
 com\capgemini\wsb\persistence\dao\impl\MedicalTreatmentDaoImpl.class
 com\capgemini\wsb\persistence\dao\Dao.class
-com\capgemini\wsb\persistence\entity\EntityManager.class
 com\capgemini\wsb\service\MedicalTreatmentService.class
 com\capgemini\wsb\persistence\dao\impl\AbstractDao.class
 com\capgemini\wsb\mapper\PatientMapper.class
 com\capgemini\wsb\dto\AddressTO.class
-com\capgemini\wsb\persistence\repository\PatientRepository.class
 com\capgemini\wsb\rest\AddressController.class
 com\capgemini\wsb\dto\DoctorTO.class
 com\capgemini\wsb\service\DoctorService.class

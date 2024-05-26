@@ -1,7 +1,7 @@
 package com.capgemini.wsb.mapper;
 
-import com.capgemini.wsb.persistence.entity.MedicalTreatmentEntity;
 import com.capgemini.wsb.dto.MedicalTreatmentTO;
+import com.capgemini.wsb.persistence.entity.MedicalTreatmentEntity;
 
 public final class MedicalTreatmentMapper {
     public static MedicalTreatmentTO mapToTO(final MedicalTreatmentEntity medicalTreatmentEntity)

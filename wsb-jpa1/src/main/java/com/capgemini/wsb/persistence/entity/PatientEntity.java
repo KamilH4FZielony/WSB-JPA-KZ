@@ -1,9 +1,8 @@
 package com.capgemini.wsb.persistence.entity;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Collection;
-
-import javax.persistence.*;
 
 @Entity
 @Table(name = "PATIENT")
@@ -39,6 +38,10 @@ public class PatientEntity {
 	public PatientEntity() {
 		// Default constructor
 	}
+
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "DOCTOR_ID")
+	private DoctorEntity doctor;
 
 	// Constructor with all required fields
 	public PatientEntity(String firstName, String lastName, String telephoneNumber, String patientNumber, LocalDate dateOfBirth, Integer age) {
